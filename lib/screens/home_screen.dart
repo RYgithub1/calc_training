@@ -1,6 +1,6 @@
+import 'package:calc_training/screens/test_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 
 
 
@@ -55,13 +55,13 @@ class _HomeScreenState extends State<HomeScreen> {
             children: <Widget>[
 
               Image.asset("assets/images/image_title.png"),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
 
-              Text(
+              const Text(
                 "select number and push START",
                 style: TextStyle(fontSize: 12.0),
               ),
-              SizedBox(height: 75.0),
+              const SizedBox(height: 75.0),
 
               DropdownButton(
                 items: _menuItems,
@@ -81,13 +81,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 // 上でなく、メソッド参照下でも可
                 // onChanged: changeDropdownItem,  // 引数を見えないところで渡す方法
               ),
-              Expanded (
+              Expanded(
                 child: Container(
                   alignment: Alignment.bottomCenter,
                   padding: EdgeInsets.only(bottom: 16.0),  // all vs only
                   child: RaisedButton.icon(
                     color: Colors.brown,
-                    onPressed: () => print("nnn"),  // F12 ... () -> function without argument。onPressed/onChanged名前のない関数
+                    // onPressed: () => print("nnn"),  // F12 ... () -> function without argument。onPressed/onChanged名前のない関数
+                    onPressed: () => startTestScreen(context),
                     // TODO:
                     label: Text("START"),
                     icon: Icon(Icons.skip_next),
@@ -110,6 +111,14 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       _numberOfQuestions = value;
     });
+  }
+
+  startTestScreen(BuildContext context) {
+    Navigator.push(
+      context,
+      // MaterialPageRoute(builder: (context) => TestScreen(_numberOfQuestions),),
+      MaterialPageRoute(builder: (context) => TestScreen(numberOfQuestions: _numberOfQuestions),),  // named paramsでrouteへ飛ばす
+    );
   }
 
 }
