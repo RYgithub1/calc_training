@@ -50,55 +50,58 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       body: SafeArea(  // wrap by SafeArea -> multiDevise
-        child: Center(
-          child: Column(
-            children: <Widget>[
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Center(
+            child: Column(
+              children: <Widget>[
 
-              Image.asset("assets/images/image_title.png"),
-              const SizedBox(height: 16.0),
+                Image.asset("assets/images/image_title.png"),
+                const SizedBox(height: 50.0),
 
-              const Text(
-                "select number and push START",
-                style: TextStyle(fontSize: 12.0),
-              ),
-              const SizedBox(height: 75.0),
+                const Text(
+                  "select number and push START",
+                  style: TextStyle(fontSize: 12.0),
+                ),
+                const SizedBox(height: 75.0),
 
-              DropdownButton(
-                items: _menuItems,
-                value: _numberOfQuestions,  // 値を直接入れるより再利用性 -> 上でプロパティを定義（型を）
-              
-                // // onChanged: (value) => print(value.toString()),
-                // onChanged: (selectValue){
-                //   // onChamgedのF12 -> typedef ValueChanged<T> = void Function(T value);
-                //   // ValueChangedだけど中身は、function関数
-                //   setState(() {
-                //   _numberOfQuestions = selectValue;
-                //   // print(_numberOfQuestions);
-                //   });
-                //   // _numberOfQuestions = selectValue;  // widget is Stone, so
-                // },
-                onChanged: (value) => changeDropdownItem(value),
-                // 上でなく、メソッド参照下でも可
-                // onChanged: changeDropdownItem,  // 引数を見えないところで渡す方法
-              ),
-              Expanded(
-                child: Container(
-                  alignment: Alignment.bottomCenter,
-                  padding: EdgeInsets.only(bottom: 16.0),  // all vs only
-                  child: RaisedButton.icon(
-                    color: Colors.brown,
-                    // onPressed: () => print("nnn"),  // F12 ... () -> function without argument。onPressed/onChanged名前のない関数
-                    onPressed: () => startTestScreen(context),
-                    // TODO:
-                    label: Text("START"),
-                    icon: Icon(Icons.skip_next),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(16.0),),
+                DropdownButton(
+                  items: _menuItems,
+                  value: _numberOfQuestions,  // 値を直接入れるより再利用性 -> 上でプロパティを定義（型を）
+                
+                  // // onChanged: (value) => print(value.toString()),
+                  // onChanged: (selectValue){
+                  //   // onChamgedのF12 -> typedef ValueChanged<T> = void Function(T value);
+                  //   // ValueChangedだけど中身は、function関数
+                  //   setState(() {
+                  //   _numberOfQuestions = selectValue;
+                  //   // print(_numberOfQuestions);
+                  //   });
+                  //   // _numberOfQuestions = selectValue;  // widget is Stone, so
+                  // },
+                  onChanged: (value) => changeDropdownItem(value),
+                  // 上でなく、メソッド参照下でも可
+                  // onChanged: changeDropdownItem,  // 引数を見えないところで渡す方法
+                ),
+                Expanded(
+                  child: Container(
+                    alignment: Alignment.bottomCenter,
+                    padding: EdgeInsets.only(bottom: 16.0),  // all vs only
+                    child: RaisedButton.icon(
+                      color: Colors.brown,
+                      // onPressed: () => print("nnn"),  // F12 ... () -> function without argument。onPressed/onChanged名前のない関数
+                      onPressed: () => startTestScreen(context),
+                      // TODO:
+                      label: Text("START"),
+                      icon: Icon(Icons.skip_next),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(16.0),),
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
