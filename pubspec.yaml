@@ -10,6 +10,8 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.0
+  # soundpool: ^1.1.1
+  soundpool:
 
 
 dev_dependencies:
